@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "scoreboard_cli_gem"
+require "require_all"
+require_all "lib"
+
+# "The code I wish I had"
+
+# NFLScoreScraper.new(url)
+  #=> 
+# NBAScoreScraper
+# NHLScoreScraper
+# MLBScoreScraper
