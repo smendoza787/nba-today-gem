@@ -2,12 +2,9 @@ require 'open-uri'
 require 'nokogiri'
 
 module Scraper
-  def self.scrape_with_date(date)
-    # scrape data
-    # for each day
-    # instantiate new matches
+  def self.scrape_nba(date)
   end
 
-  def self.scrape_with_week(week)
+  def self.scrape_nfl(week)
   end
 end

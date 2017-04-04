@@ -29,7 +29,8 @@ scoreboard-cli-gem walkthrough
   - MLB
 
   gets = "NBA"
-  "Here are the scores for #{day.show_date}"
+
+  "Here are the NBA scores for #{day.show_date}"
 
   @ Target Center, Minneapolis, Minnesota
   Portland Trail Blazers (38-39) : 109
@@ -37,6 +38,18 @@ scoreboard-cli-gem walkthrough
   FINAL
 
 
-  "If you would like to view a different day of games, please enter a date (YYYMMDD)"
-  "or enter the name of a different sport to switch sports:"
-  gets = "20170403"
+  "If you would like to view a different day of games, please enter the sport along with the date (YYYMMDD)"
+  "ex. NFL 20170222"
+
+  gets = "NBA 20170403"
+
+  NBA Los Angeles Lakers
+    #=> #<Match>
+    (returns most recent game)
+
+  NFL Los Angeles Rams
+    #=> #<Match>
+    (returns most recent game)
+
+  NBA today
+    #=> [#<Match>, #<Match>, #<Match>]
