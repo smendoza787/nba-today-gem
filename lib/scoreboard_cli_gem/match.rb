@@ -2,12 +2,15 @@ class Match
   attr_accessor :status, :day, :scores
   attr_reader :home_team, :away_team
 
+  @@all = []
+
   def initialize(day)
     if !day.is_a?(Day)
       raise TypeError, "must be a Day object"
     else
       @day = day
       self.day.matches << self
+      @@all << self
     end
 
     @scores = {}
@@ -29,6 +32,10 @@ class Match
       @home_team = home_team
       home_team.matches << self
     end
+  end
+
+  def self.all
+    @@all
   end
 
 end
