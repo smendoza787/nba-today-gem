@@ -4,3 +4,5 @@ require "bundler/setup"
 require "scoreboard_cli_gem"
 require "require_all"
 require_all "lib"
+
+ScoreboardCliGem

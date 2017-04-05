@@ -1,6 +1,6 @@
 # Scoreboard Cli Gem
 
-Welcome to my Scoreboard CLI Gem! This is a project I am working on for [Learn Verified](https://learn.co/) Object Oriented Ruby final project. You will be able to get the scores of all your favorite games through your command line with this simple gem!
+Welcome to my Scoreboard CLI Gem! This is a project I am working on for [Learn Verified](https://learn.co/) Object Oriented Ruby final project. You will be able to get the scores of all your favorite sports through your command line with this simple gem!
 
 ## Installation
 
