@@ -29,6 +29,7 @@ class CommandLine
         puts ""
 
         puts "Type in your favorite sport for the latest scores:"
+        print "> "
         input = gets.strip.upcase
       when "NBA"
         puts ""
@@ -41,6 +42,7 @@ class CommandLine
         puts ""
 
         puts "Type in your favorite sport for the latest scores:"
+        print "> "
         input = gets.strip.upcase
       when "NHL"
       when "MLB"
