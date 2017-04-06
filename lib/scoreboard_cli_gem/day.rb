@@ -21,8 +21,6 @@ class Day
     new_match.home_team = home_team
     new_match.scores[new_match.home_team.name] = h_score
     new_match.status = status
-
-    self.matches << new_match
   end
 
   def add_match_by_hash(scraped_hash)
@@ -36,11 +34,10 @@ class Day
       i += 1
     end
 
-    Match.all
+    # Match.all
   end
 
   def show_scores
-    binding.pry
     self.matches.each do |match|
       print "#{match.away_team.name} : "
       puts match.scores["#{match.away_team.name}"]
