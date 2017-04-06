@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'nokogiri'
-
 class Scraper
 
   def self.scrape_nba(date = Time.now.strftime("%Y%m%d"))
@@ -19,3 +16,5 @@ class Scraper
   end
 
 end
+
+Scraper.scrape_nba

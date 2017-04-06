@@ -1,5 +1,3 @@
-require 'Date'
-
 class Day
   attr_accessor :date
 
@@ -42,6 +40,7 @@ class Day
   end
 
   def show_scores
+    binding.pry
     self.matches.each do |match|
       print "#{match.away_team.name} : "
       puts match.scores["#{match.away_team.name}"]

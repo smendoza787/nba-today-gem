@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
+require_relative '../config/environment.rb'
+
 require "bundler/setup"
 require "scoreboard_cli_gem"
-require "require_all"
-require_all "lib"
 
-ScoreboardCliGem
+CommandLine.new.call
