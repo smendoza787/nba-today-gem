@@ -13,12 +13,12 @@ class Scraper
     days = nba_msn_sports.css("div.dataContainer div.autorefreshBox div.sectionsgroup div.section")
     matching_day = days.detect{ |day| day.attribute("id").value == date }
 
-
     {
       :away_team_array => days.first.css("td.teamname.teamlineup.alignright.size234").children.map{|child| child.text},
       :away_scores_array => days.first.css("td.totalscore.teamlineup").text.strip.split("\n\n "),
       :home_team_array => days.first.css("td.teamname.teamlinedown.alignright.size234").children.map{|child| child.text},
-      :home_scores_array => days.first.css("td.totalscore.teamlinedown").text.strip.split("\n\n ")
+      :home_scores_array => days.first.css("td.totalscore.teamlinedown").text.strip.split("\n\n "),
+      :match_status => days.first.css("td.matchstatus.paddingleft.orangeText.hidedownlevel.size123.aligncenter div a").children.map{|child| child.text}
     }
   end
 

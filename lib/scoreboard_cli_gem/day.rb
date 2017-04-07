@@ -1,7 +1,7 @@
 class Day
   attr_accessor :date
 
-  def initialize(date = Time.now.strftime("%Y-%m-%d"))
+  def initialize(date = Time.now.strftime("%Y%m%d"))
     @date = date
     @matches = []
   end
@@ -30,7 +30,7 @@ class Day
       away_team = Team.new(scraped_hash[:away_team_array][i])
       home_team = Team.new(scraped_hash[:home_team_array][i])
 
-      self.add_match(away_team, scraped_hash[:away_scores_array][i], home_team, scraped_hash[:home_scores_array][i])
+      self.add_match(away_team, scraped_hash[:away_scores_array][i], home_team, scraped_hash[:home_scores_array][i], scraped_hash[:match_status][i])
       i += 1
     end
 

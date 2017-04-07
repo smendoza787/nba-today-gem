@@ -1,12 +1,13 @@
 class CommandLine
   def call
-    puts "Hello, Welcome to the Scoreboard CLI Gem!"
-    puts "Type in your favorite sport for the latest scores:"
-    puts "- NFL"
-    puts "- NBA"
-    puts "- NHL"
-    puts "- MLB"
-    puts "-----------------------------------------------"
+    puts "----------------------------------------------------"
+    puts "Hello, Welcome to the Scoreboard CLI Gem!           |"
+    puts "Type in your favorite sport for the latest scores:  |"
+    puts "- NFL                                               |"
+    puts "- NBA                                               |"
+    puts "- NHL                                               |"
+    puts "- MLB                                               |"
+    puts "----------------------------------------------------"
     print "> "
     input = gets.strip.upcase
 
@@ -36,6 +37,8 @@ class CommandLine
         today = Day.new
         today.add_match_by_hash(Scraper.scrape_nba)
 
+        puts today.show_date
+        puts "---------------------------------------------"
         today.show_scores
         puts ""
         puts "---------------------------------------------"
