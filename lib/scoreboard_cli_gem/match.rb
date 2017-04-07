@@ -1,5 +1,5 @@
 class Match
-  attr_accessor :status, :day, :scores
+  attr_accessor :status, :day, :scores, :venue
   attr_reader :home_team, :away_team
 
   @@all = []
