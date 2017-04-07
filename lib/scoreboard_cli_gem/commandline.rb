@@ -35,7 +35,8 @@ class CommandLine
         puts ""
         today = Day.new
         today.add_match_by_hash(Scraper.scrape_nba)
-
+        puts today.show_date
+        puts "---------------------------------------------"
         today.show_scores
         puts ""
         puts "---------------------------------------------"
