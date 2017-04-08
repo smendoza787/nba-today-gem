@@ -26,15 +26,6 @@ class Scraper
     # venue
   end
 
-<<<<<<< HEAD
-    {
-      :away_team_array => days.first.css("td.teamname.teamlineup.alignright.size234").children.map{|child| child.text},
-      :away_scores_array => days.first.css("td.totalscore.teamlineup").text.strip.split("\n\n "),
-      :home_team_array => days.first.css("td.teamname.teamlinedown.alignright.size234").children.map{|child| child.text},
-      :home_scores_array => days.first.css("td.totalscore.teamlinedown").text.strip.split("\n\n "),
-      :match_status => days.first.css("td.matchstatus.paddingleft.orangeText.hidedownlevel.size123.aligncenter div a").children.map{|child| child.text}
-    }
-=======
   def scrape_scores
     # returns array of team names
     # and array of scores
@@ -46,7 +37,6 @@ class Scraper
     # box score array
     # top performers array
     # venue
->>>>>>> nba_date_functionality
   end
 
 end
