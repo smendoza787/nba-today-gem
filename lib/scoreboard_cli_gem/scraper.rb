@@ -63,20 +63,26 @@ class Scraper
     # returned array of nba game objects with links to game info URL, home and away teams with scores
     self.doc.css("table tbody").each do |game|
       new_nba_game = Game.new("nba")
+
+      new_nba_game.url = "https://www.msn.com/en-us/sports/#{@league}/scores#{game.attribute("data-link").value}"
+
       new_nba_game.away_team = Team.new(game.css("td.teamname.teamlineup.alignright.size234").text, "nba")
       new_nba_game.away_team.score[0] = game.css("td.totalscore.teamlineup").text.gsub(/[\n _]/, "") # Total score
       new_nba_game.away_team.score[1] = game.css("tr:nth-child(1) td:nth-child(7)").text.gsub(/[\n _]/, "") # Quarter 1 score
-      # new_nba_game.away_team.score[2] =  # Quarter 2 score
-      # new_nba_game.away_team.score[3] =  # Quarter 3 score
-      # new_nba_game.away_team.score[4] =  # Quarter 4 score
+      new_nba_game.away_team.score[2] = game.css("tr:nth-child(1) td:nth-child(8)").text.gsub(/[\n _]/, "") # Quarter 2 score
+      new_nba_game.away_team.score[3] = game.css("tr:nth-child(1) td:nth-child(9)").text.gsub(/[\n _]/, "") # Quarter 3 score
+      new_nba_game.away_team.score[4] = game.css("tr:nth-child(1) td:nth-child(10)").text.gsub(/[\n _]/, "") # Quarter 4 score
 
       new_nba_game.home_team = Team.new(game.css("td.teamname.teamlinedown.alignright.size234").text, "nba")
       new_nba_game.home_team.score[0] = game.css("td.totalscore.teamlinedown").text.gsub(/[\n _]/, "") # Total score
       new_nba_game.home_team.score[1] = game.css("tr:nth-child(2) td:nth-child(5)").text.gsub(/[\n _]/, "") # Quarter 1 score
+      new_nba_game.home_team.score[2] = game.css("tr:nth-child(2) td:nth-child(6)").text.gsub(/[\n _]/, "") # Quarter 2 score
+      new_nba_game.home_team.score[3] = game.css("tr:nth-child(2) td:nth-child(7)").text.gsub(/[\n _]/, "") # Quarter 3 score
+      new_nba_game.home_team.score[4] = game.css("tr:nth-child(2) td:nth-child(8)").text.gsub(/[\n _]/, "") # Quarter 4 score
+
       self.games << new_nba_game
     end
     self.games
-    binding.pry
   end
 
   def scrape_nba_game_info
