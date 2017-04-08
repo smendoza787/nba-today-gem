@@ -5,6 +5,7 @@ require 'pry'
 
 require_relative './game.rb'
 require_relative './team.rb'
+require_relative './player.rb'
 
 class Scraper
   attr_accessor :league, :doc
@@ -66,8 +67,9 @@ class Scraper
 
       new_nba_game.status = game.css("td.matchstatus.orangeText.hidedownlevel.size4.alignleft div").text
       new_nba_game.venue = game.css("td.venue.size4").text
+      new_nba_game.url = "https://www.msn.com/#{game.attribute("data-link").value}"
 
-      new_nba_game.url = "https://www.msn.com/en-us/sports/#{@league}/scores#{game.attribute("data-link").value}"
+      new_nba_game.get_top_performers
 
       new_nba_game.away_team = Team.new(game.css("td.teamname.teamlineup.alignright.size234").text, "nba")
       new_nba_game.away_team.score[0] = game.css("td.totalscore.teamlineup").text.gsub(/[\n _]/, "") # Total score
@@ -85,16 +87,15 @@ class Scraper
 
       self.games << new_nba_game
     end
-    binding.pry
     self.games
   end
 
-  def scrape_nba_game_info
-    # returns hash with:
-    # box score array
-    # top performers array
-    # venue
-  end
+  # def scrape_nba_game_info
+  #   # returns hash with:
+  #   # top performers array of NbaPlayer objects
+  #
+  #
+  # end
 
 end
 

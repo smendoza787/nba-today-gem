@@ -9,6 +9,8 @@ require_relative './scoreboard_cli_gem/scraper.rb'
 require_relative './scoreboard_cli_gem/commandline.rb'
 require_relative './scoreboard_cli_gem/game.rb'
 require_relative './scoreboard_cli_gem/team.rb'
+require_relative './scoreboard_cli_gem/player.rb'
+require_relative './scoreboard_cli_gem/nba_player.rb'
 require_relative './scoreboard_cli_gem/version.rb'
 
 
