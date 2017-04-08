@@ -64,6 +64,9 @@ class Scraper
     self.doc.css("table tbody").each do |game|
       new_nba_game = Game.new("nba")
 
+      new_nba_game.status = game.css("td.matchstatus.orangeText.hidedownlevel.size4.alignleft div").text
+      new_nba_game.venue = game.css("td.venue.size4").text
+
       new_nba_game.url = "https://www.msn.com/en-us/sports/#{@league}/scores#{game.attribute("data-link").value}"
 
       new_nba_game.away_team = Team.new(game.css("td.teamname.teamlineup.alignright.size234").text, "nba")
@@ -82,6 +85,7 @@ class Scraper
 
       self.games << new_nba_game
     end
+    binding.pry
     self.games
   end
 
