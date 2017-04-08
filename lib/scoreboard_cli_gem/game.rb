@@ -1,11 +1,12 @@
 class Game
-  attr_accessor :status, :score, :venue, :top_peformers, :league
-  attr_reader :home_team, :away_team
+  attr_accessor :status, :score, :venue, :top_peformers, :league, :home_team, :away_team, :url
 
   @@all = []
 
   def initialize(league)
     @league = league
+    @top_peformers = []
+    @@all << self
   end
 
   def away_team=(away_team)
