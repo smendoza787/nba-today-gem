@@ -1,9 +1,9 @@
 class Team
-  attr_accessor :name, :score, :matches
+  attr_accessor :name, :score, :league
 
-  def initialize(name, score)
+  def initialize(name, league)
     @name = name
-    @score = score
-    @matches = []
+    @league = league
+    @score = Score.new(self.league)
   end
 end
