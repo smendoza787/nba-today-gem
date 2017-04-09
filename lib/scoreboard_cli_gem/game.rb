@@ -8,7 +8,7 @@ class Game
 
   def initialize(league)
     @league = league
-    @top_peformers = []
+    @top_peformers = {}
     @@all << self
   end
 
@@ -35,40 +35,7 @@ class Game
   def get_top_performers
     # will return hash of player objects
 
-    get_top_players = Nokogiri::HTML(open(self.url)).css("div.leaders")
-
-    point_leaders = [
-      NbaPlayer.new(get_top_players.css("div.points a:nth-child(3) div div.board span div.playername span").text),
-      NbaPlayer.new(get_top_players.css("div.points a:nth-child(5) div div.board span div.playername span").text)
-    ]
-
-    rebound_leaders = [
-      NbaPlayer.new(get_top_players.css("div.rebounds a:nth-child(3) div div.board span div.playername span").text),
-      NbaPlayer.new(get_top_players.css("div.rebounds a:nth-child(5) div div.board span div.playername span").text)
-    ]
-
-    assist_leaders = [
-      NbaPlayer.new(get_top_players.css("div.assists a:nth-child(3) div div.board span div.playername span").text),
-      NbaPlayer.new(get_top_players.css("div.assists a:nth-child(5) div div.board span div.playername span").text)
-    ]
-
-
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-
-    # Scrape and add points/rebounds/assists to player objects
-
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-    # RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE RESUME HERE
-
-    poop = {
-      :points => point_leaders,
-      :rebounds => rebound_leaders,
-      :assists => assist_leaders
-    }
-    binding.pry
+    
   end
 
 end
