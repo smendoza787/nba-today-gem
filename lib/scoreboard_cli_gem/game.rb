@@ -1,5 +1,4 @@
-require_relative './player.rb'
-require_relative './nba_player.rb'
+# require_relative './nba_player.rb'
 
 class Game
   attr_accessor :status, :score, :venue, :top_peformers, :league, :home_team, :away_team, :url
@@ -35,7 +34,7 @@ class Game
   def get_top_performers
     # will return hash of player objects
 
-    
+
   end
 
 end

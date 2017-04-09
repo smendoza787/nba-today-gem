@@ -1,63 +1,22 @@
-require 'Date'
-require 'open-uri'
-require 'nokogiri'
-require 'pry'
-
-require_relative './game.rb'
-require_relative './team.rb'
-require_relative './player.rb'
+# require 'Date'
+# require 'open-uri'
+# require 'nokogiri'
+# require 'pry'
+#
+# require_relative './game.rb'
+# require_relative './team.rb'
+# require_relative './nba_player.rb'
 
 class Scraper
-  attr_accessor :league, :doc
+  attr_accessor :doc
 
-  def initialize(league)
-    @league = league
+  def initialize
     @games = []
-
-    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/#{@league}/scores")).css("div.sectionsgroup ##{Date.today.prev_day.to_s.gsub("-","")}")
+    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.prev_day.to_s.gsub("-","")}")
   end
 
   def games
     @games
-  end
-
-  def scrape_mlb_scores
-    #returned array of mlb game objects with links to game info URL, home and away teams with scores
-
-    Game.all.map{ |game| game.league("mlb") }
-  end
-
-  def scrape_mlb_game_info
-    # returns hash with:
-    # box score array
-    # top performers array
-    # venue
-  end
-
-  def scrape_nhl_scores
-    #returned array of nhl game objects with links to game info URL, home and away teams with scores
-
-    Game.all.map{ |game| game.league(self.league) }
-  end
-
-  def scrape_nhl_game_info
-    # returns hash with:
-    # box score array
-    # top performers array
-    # venue
-  end
-
-  def scrape_nfl_scores
-    #returned array of nfl game objects with links to game info URL, home and away teams with scores
-
-    Game.all.map{ |game| game.league(self.league) }
-  end
-
-  def scrape_nfl_game_info
-    # returns hash with:
-    # box score array
-    # top performers array
-    # venue
   end
 
   def scrape_nba_scores
@@ -86,10 +45,9 @@ class Scraper
 
       scrape_nba_top_performers(new_nba_game)
 
-      self.games << new_nba_game
+      games << new_nba_game
     end
-    binding.pry
-    self.games
+    games
   end
 
   def scrape_nba_top_performers(game)
@@ -125,5 +83,3 @@ class Scraper
 
   end
 end
-
-Scraper.new("nba").scrape_nba_scores

@@ -1,3 +1,7 @@
-class NbaPlayer < Player
-  attr_accessor :rebounds, :assists
+class NbaPlayer
+  attr_accessor :name, :points, :rebounds, :assists
+
+  def initialize(name)
+    @name = name
+  end
 end

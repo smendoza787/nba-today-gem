@@ -1,53 +1,25 @@
 class CommandLine
   def call
-    puts "----------------------------------------------------"
-    puts "Hello, Welcome to the Scoreboard CLI Gem!           |"
-    puts "Type in your favorite sport for the latest scores:  |"
-    puts "- NFL                                               |"
-    puts "- NBA                                               |"
-    puts "- NHL                                               |"
-    puts "- MLB                                               |"
-    puts "----------------------------------------------------"
+    puts "Hello, Welcome to the NBA Today Gem!"
+    puts "Type in 'nba today' for the latest NBA scores or type 'exit' to quit!"
     print "> "
-    puts "Hello, Welcome to the ScoreBoard CLI Gem!"
     menu
-    puts "Thanks for checking the ScoreBoard!"
+    puts "Thanks for using the NBA Today Gem!"
   end
 
   def menu
-    list_sports
-    input = gets.strip.upcase
+    input = gets.strip.downcase
 
-    until input == "EXIT"
+    until input == "exit"
       case input
-      when "NFL"
-      when "NBA"
-      when "NHL"
-      when "MLB"
+      when "nba today"
+        latest_scores = Scraper.new.scrape_nba_scores
+        binding.pry
       else
-        puts "Please choose a sport from the list!"
+        puts "Please type in 'nba today' or 'exit'!"
         print "> "
-        input = gets.strip.upcase
+        input = gets.strip.downcase
       end
     end
-  end
-
-  def list_sports
-    puts "Type in your favorite sport for the latest scores:"
-    puts "1. NFL"
-    puts "2. NBA"
-    puts "3. NHL"
-    puts "4. MLB"
-    puts "---------------------------------------------------"
-    puts ""
-    print "> "
-  end
-
-  def get_nba_games
-
-  end
-
-  def sub_menu(sport)
-
   end
 end
