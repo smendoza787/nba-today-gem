@@ -1,6 +1,7 @@
 require 'Date'
 require 'open-uri'
 require 'nokogiri'
+require 'command_line_reporter'
 require 'pry'
 
 require_relative './scoreboard_cli_gem/scraper.rb'

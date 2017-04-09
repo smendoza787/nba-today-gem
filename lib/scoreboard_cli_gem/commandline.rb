@@ -13,13 +13,17 @@ class CommandLine
     until input == "exit"
       case input
       when "nba today"
-        latest_scores = Scraper.new.scrape_nba_scores
-        binding.pry
+        show_games_table
       else
         puts "Please type in 'nba today' or 'exit'!"
         print "> "
         input = gets.strip.downcase
       end
     end
+  end
+
+  def show_games_table
+    scores = Scraper.new.scrape_nba_scores
+    binding.pry
   end
 end

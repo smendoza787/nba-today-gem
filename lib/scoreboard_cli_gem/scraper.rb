@@ -8,9 +8,12 @@
 # require_relative './nba_player.rb'
 
 class Scraper
+  include CommandLineReporter
+
   attr_accessor :doc
 
   def initialize
+    self.formatter = 'progress'
     @games = []
     @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.prev_day.to_s.gsub("-","")}")
   end
