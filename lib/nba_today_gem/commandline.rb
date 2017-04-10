@@ -100,10 +100,6 @@ class NbaTodayGem::CommandLine
   end
 
   def show_game(index)
-    # header :title => self.games[index].date, :width => 100, :align => 'center', :rule => true, :color => 'blue', :bold => true
-
-    # puts
-
     table(:border => true) do
       row do
         column(self.games[index].date, :width => 30, :align => 'center')
