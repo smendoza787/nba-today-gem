@@ -1,6 +1,6 @@
 # NBA Today Gem
 
-Welcome to my NBA Today Gem! This is a project I am working on for [Learn Verified](https://learn.co/) Object Oriented Ruby final project. You will be able to get the scores of all your favorite sports through your command line with this simple gem!
+The NBA Today Gem is a simple gem that allows you to get the latest NBA scores right through your terminal.
 
 ## Installation
 
