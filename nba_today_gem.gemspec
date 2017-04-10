@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'scoreboard_cli_gem/version'
+require 'nba_today_gem/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "scoreboard_cli_gem"
-  spec.version       = ScoreboardCliGem::VERSION
+  spec.name          = "nba_today_gem"
+  spec.version       = NbaTodayGem::VERSION
   spec.authors       = ["Sergio Mendoza"]
   spec.email         = ["smendoza787@gmail.com"]
 
-  spec.summary       = "A  CLI gem for sports scores."
-  spec.description   = "Find out all the scores of the latest games right through your terminal."
+  spec.summary       = "A gem for finding the latest NBA scores."
+  spec.description   = "Get the latest NBA scores right through your terminal!"
   spec.homepage      = "https://github.com/smendoza787/scoreboard-cli-app"
   spec.license       = "MIT"
 

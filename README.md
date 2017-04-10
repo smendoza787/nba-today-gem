@@ -1,13 +1,13 @@
-# Scoreboard Cli Gem
+# NBA Today Gem
 
-Welcome to my Scoreboard CLI Gem! This is a project I am working on for [Learn Verified](https://learn.co/) Object Oriented Ruby final project. You will be able to get the scores of all your favorite sports through your command line with this simple gem!
+Welcome to my NBA Today Gem! This is a project I am working on for [Learn Verified](https://learn.co/) Object Oriented Ruby final project. You will be able to get the scores of all your favorite sports through your command line with this simple gem!
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'scoreboard_cli_gem'
+gem 'nba_today_gem'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install scoreboard_cli_gem
+    $ gem install nba_today_gem
 
 ## Usage
 

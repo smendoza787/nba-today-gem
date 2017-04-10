@@ -1,13 +1,4 @@
-# require 'Date'
-# require 'open-uri'
-# require 'nokogiri'
-# require 'pry'
-#
-# require_relative './game.rb'
-# require_relative './team.rb'
-# require_relative './nba_player.rb'
-
-class Scraper
+class NbaTodayGem::Scraper
   attr_accessor :doc
 
   def initialize

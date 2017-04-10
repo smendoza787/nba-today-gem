@@ -1,0 +1,12 @@
+require 'Date'
+require 'open-uri'
+require 'nokogiri'
+require 'command_line_reporter'
+require 'pry'
+
+require_relative './nba_today_gem/version.rb'
+require_relative './nba_today_gem/scraper.rb'
+require_relative './nba_today_gem/commandline.rb'
+require_relative './nba_today_gem/game.rb'
+require_relative './nba_today_gem/team.rb'
+require_relative './nba_today_gem/nba_player.rb'
