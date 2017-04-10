@@ -3,7 +3,12 @@ class NbaTodayGem::Scraper
 
   def initialize
     @games = []
-    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.prev_day.to_s.gsub("-","")}")
+    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.to_s.gsub("-","")}")
+
+    # If there are no games today (if you're looking at this late-night) get the games from the previous day
+    if Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.to_s.gsub("-","")}") == []
+      @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup ##{Date.today.prev_day.to_s.gsub("-","")}")
+    end
   end
 
   def games

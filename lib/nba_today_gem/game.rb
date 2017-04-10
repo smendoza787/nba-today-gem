@@ -29,10 +29,4 @@ class Game
     @@all
   end
 
-  def get_top_performers
-    # will return hash of player objects
-
-
-  end
-
 end
