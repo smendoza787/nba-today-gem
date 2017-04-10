@@ -36,8 +36,8 @@ class NbaTodayGem::CommandLine
       self.games.each.with_index(1) do |game, index|
         table(:border => true) do
           row do
-            column('GAME NO.', :width => 5)
-            column('TEAM', :width => 30, :align => 'center')
+            column('GAME NUM.', :width => 5)
+            column(game.date, :width => 30, :align => 'center')
             column('SCORE', :width => 10, :align => 'right')
           end
           row do
@@ -58,8 +58,8 @@ class NbaTodayGem::CommandLine
       self.games.each.with_index(1) do |game, index|
         table(:border => true) do
           row do
-            column('GAME NO.', :width => 5)
-            column('TEAM', :width => 30, :align => 'center')
+            column('GAME NUM.', :width => 5)
+            column(game.date, :width => 30, :align => 'center')
             column('SCORE', :width => 10, :align => 'right')
           end
           row do
@@ -82,9 +82,9 @@ class NbaTodayGem::CommandLine
 
     until game_no == 'back' || game_no == 'exit'
       puts
-      puts "Choose a GAME NO. to view more stats and info"
-      puts "or type 'list games' for a list of games"
-      puts "or type 'back' to go back to the main menu."
+      puts "Type in a GAME NUM. to view more stats and info"
+      puts "Type 'list games' for a list of games"
+      puts "Type 'back' to go back to the main menu."
       puts
       print "> "
       game_no = gets.strip.downcase
@@ -100,11 +100,34 @@ class NbaTodayGem::CommandLine
   end
 
   def show_game(index)
+    # header :title => self.games[index].date, :width => 100, :align => 'center', :rule => true, :color => 'blue', :bold => true
+
+    # puts
+
+    table(:border => true) do
+      row do
+        column(self.games[index].date, :width => 30, :align => 'center')
+        column(self.games[index].venue, :width => 50, :align => 'center')
+      end
+    end
+
+    puts
+
+    if self.games[index].recap != ""
+      table(:border => true) do
+        row do
+          column(self.games[index].recap, :width => 80, :align => 'center')
+        end
+      end
+
+      puts
+    end
+
     header :title => 'BOX SCORE', :width => 100, :align => 'center', :rule => true, :color => 'red', :bold => true
 
     table(:border => true) do
       row do
-        column('TEAM', :width => 30, :align => 'center')
+        column('TEAM', :width => 25, :align => 'center')
         column('QTR 1', :align => 'center')
         column('QTR 2', :align => 'center')
         column('QTR 3', :align => 'center')
@@ -129,26 +152,24 @@ class NbaTodayGem::CommandLine
       end
     end
 
-    puts "\n Venue: #{self.games[index].venue}"
-
     puts
-    header :title => 'TOP PERFORMERS', :width => 70, :align => 'center', :rule => true, :color => 'green', :bold => true
+    header :title => 'TOP PERFORMERS', :width => 100, :align => 'center', :rule => true, :color => 'green', :bold => true
 
     table(:border => true) do
       row do
-        column("#{self.games[index].top_peformers[:points][0].name}: #{self.games[index].top_peformers[:points][0].points}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:points][0].name}: #{self.games[index].top_peformers[:points][0].points}", :width => 35, :align => 'center')
         column('POINTS', :align => 'center')
-        column("#{self.games[index].top_peformers[:points][1].name}: #{self.games[index].top_peformers[:points][1].points}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:points][1].name}: #{self.games[index].top_peformers[:points][1].points}", :width => 35, :align => 'center')
       end
       row do
-        column("#{self.games[index].top_peformers[:rebounds][0].name}: #{self.games[index].top_peformers[:rebounds][0].rebounds}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:rebounds][0].name}: #{self.games[index].top_peformers[:rebounds][0].rebounds}", :width => 35, :align => 'center')
         column('REBOUNDS', :align => 'center')
-        column("#{self.games[index].top_peformers[:rebounds][1].name}: #{self.games[index].top_peformers[:rebounds][1].rebounds}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:rebounds][1].name}: #{self.games[index].top_peformers[:rebounds][1].rebounds}", :width => 35, :align => 'center')
       end
       row do
-        column("#{self.games[index].top_peformers[:assists][0].name}: #{self.games[index].top_peformers[:assists][0].assists}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:assists][0].name}: #{self.games[index].top_peformers[:assists][0].assists}", :width => 35, :align => 'center')
         column('ASSISTS', :align => 'center')
-        column("#{self.games[index].top_peformers[:assists][1].name}: #{self.games[index].top_peformers[:assists][1].assists}", :width => 25, :align => 'center')
+        column("#{self.games[index].top_peformers[:assists][1].name}: #{self.games[index].top_peformers[:assists][1].assists}", :width => 35, :align => 'center')
       end
     end
   end

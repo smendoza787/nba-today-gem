@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :status, :score, :venue, :top_peformers, :league, :home_team, :away_team, :url
+  attr_accessor :status, :score, :venue, :top_peformers, :league, :home_team, :away_team, :url, :recap, :date
 
   @@all = []
 
