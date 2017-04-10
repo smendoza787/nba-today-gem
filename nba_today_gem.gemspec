@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A gem for finding the latest NBA scores."
   spec.description   = "Get the latest NBA scores right through your terminal!"
-  spec.homepage      = "https://github.com/smendoza787/scoreboard-cli-app"
+  spec.homepage      = "https://github.com/smendoza787/nba-today-gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
