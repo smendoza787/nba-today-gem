@@ -36,9 +36,9 @@ class NbaTodayGem::CommandLine
       self.games.each.with_index(1) do |game, index|
         table(:border => true) do
           row do
-            column('GAME NUM.', :width => 5)
+            column('GAME NUM.', :width => 10, :align => 'center')
             column(game.date, :width => 30, :align => 'center')
-            column('SCORE', :width => 10, :align => 'right')
+            column('SCORE', :width => 10, :align => 'center')
           end
           row do
             column(index)
