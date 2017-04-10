@@ -157,6 +157,11 @@ class NbaTodayGem::CommandLine
 
     table(:border => true) do
       row do
+        column("#{self.games[index].away_team.name}", :width => 35, :align => 'center')
+        column('', :align => 'center')
+        column("#{self.games[index].home_team.name}", :width => 35, :align => 'center')
+      end
+      row do
         column("#{self.games[index].top_peformers[:points][0].name}: #{self.games[index].top_peformers[:points][0].points}", :width => 35, :align => 'center')
         column('POINTS', :align => 'center')
         column("#{self.games[index].top_peformers[:points][1].name}: #{self.games[index].top_peformers[:points][1].points}", :width => 35, :align => 'center')

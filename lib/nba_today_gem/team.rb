@@ -1,20 +1,8 @@
-class Team
-  attr_accessor :name, :score, :league
+class NbaTodayGem::Team
+  attr_accessor :name, :score
 
-  def initialize(name, league)
+  def initialize(name)
     @name = name
-    @league = league
-
-    # score is equal to an array of innings/periods/quarters
-    # the first element (@score[0]) is the TOTAL/FINAL score
-    # subsequent elements are the inning/period/quarter totals
-    case @league
-    when "mlb"
-      @score = [0,0,0,0,0,0,0,0,0,0]
-    when "nhl"
-      @score = [0,0,0,0]
-    else
-      @score = [0,0,0,0,0]
-    end
+    @score = [0,0,0,0,0]
   end
 end

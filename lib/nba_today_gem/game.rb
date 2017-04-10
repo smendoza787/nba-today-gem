@@ -1,16 +1,15 @@
-class Game
-  attr_accessor :status, :score, :venue, :top_peformers, :league, :home_team, :away_team, :url, :recap, :date
+class NbaTodayGem::Game
+  attr_accessor :status, :score, :venue, :top_peformers, :home_team, :away_team, :url, :recap, :date
 
   @@all = []
 
-  def initialize(league)
-    @league = league
+  def initialize
     @top_peformers = {}
     @@all << self
   end
 
   def away_team=(away_team)
-    if !away_team.is_a?(Team)
+    if !away_team.is_a?(NbaTodayGem::Team)
       raise TypeError, "must be a Team object"
     else
       @away_team = away_team
@@ -18,7 +17,7 @@ class Game
   end
 
   def home_team=(home_team)
-    if !home_team.is_a?(Team)
+    if !home_team.is_a?(NbaTodayGem::Team)
       raise TypeError, "must be a Team object"
     else
       @home_team = home_team

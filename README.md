@@ -1,6 +1,7 @@
 # NBA Today Gem
 
 The NBA Today Gem is a simple gem that allows you to get the latest NBA scores right through your terminal.
+Data is scraped from MSN Sports.
 
 ## Installation
 
@@ -12,7 +13,8 @@ gem 'nba_today_gem'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
+    $ ./bin/nba_today_gem
 
 Or install it yourself as:
 
@@ -20,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+NBA Today Gem is a simple gem that gives you game information on the latest NBA games.
 
 ## Development
 

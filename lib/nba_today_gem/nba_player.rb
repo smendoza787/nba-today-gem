@@ -1,4 +1,4 @@
-class NbaPlayer
+class NbaTodayGem::NbaPlayer
   attr_accessor :name, :points, :rebounds, :assists
 
   def initialize(name)
