@@ -7,7 +7,7 @@ class NbaTodayGem::Scraper
     # CommandLineReporter progress
     self.formatter = 'progress'
 
-    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup div.section")[0..1]
+    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup div.section")[0..2]
     @games = []
   end
 

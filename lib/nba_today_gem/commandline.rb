@@ -103,7 +103,7 @@ class NbaTodayGem::CommandLine
     table(:border => true) do
       row do
         column(self.games[index].date, :width => 30, :align => 'center')
-        column(self.games[index].venue, :width => 50, :align => 'center')
+        column(self.games[index].venue, :width => 55, :align => 'center')
       end
     end
 
@@ -124,10 +124,10 @@ class NbaTodayGem::CommandLine
     table(:border => true) do
       row do
         column('TEAM', :width => 25, :align => 'center')
-        column('QTR 1', :align => 'center')
-        column('QTR 2', :align => 'center')
-        column('QTR 3', :align => 'center')
-        column('QTR 4', :align => 'center')
+        column('QTR 1', :width => 9, :align => 'center')
+        column('QTR 2', :width => 9, :align => 'center')
+        column('QTR 3', :width => 9, :align => 'center')
+        column('QTR 4', :width => 9, :align => 'center')
         column(self.games[index].status, :align => 'center')
       end
       row do
