@@ -53,6 +53,11 @@ class NbaTodayGem::Scraper
     get_game_info = Nokogiri::HTML(open(game.url))
 
     game.date = get_game_info.css("#gamematchupsummary div.basicinfo div.datetime.hide1").text
+
+    if game.date == ""
+      game.date = "LIVE NOW"
+    end
+
     game.recap = get_game_info.css("#matchuprecapmodule header h1").text
 
     point_leaders = [
