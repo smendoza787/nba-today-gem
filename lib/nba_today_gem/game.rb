@@ -24,8 +24,21 @@ class NbaTodayGem::Game
     end
   end
 
+  def self.find(index)
+    @@all[index]
+  end
+
   def self.all
     @@all
+  end
+
+  def totalscore
+    self.home_team.score[0].to_i + self.away_team.score[0].to_i
+  end
+
+  def self.sort_by_total_score
+    # binding.pry
+    NbaTodayGem::Game.all.sort! {|game1, game2| game2.totalscore <=> game1.totalscore}
   end
 
 end

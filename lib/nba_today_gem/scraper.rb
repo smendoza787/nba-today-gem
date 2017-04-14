@@ -7,7 +7,7 @@ class NbaTodayGem::Scraper
     # CommandLineReporter progress
     self.formatter = 'progress'
 
-    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup div.section")[0..2]
+    @doc = Nokogiri::HTML(open("https://www.msn.com/en-us/sports/nba/scores")).css("div.sectionsgroup div.section")[0..3]
     @games = []
   end
 
@@ -39,17 +39,17 @@ class NbaTodayGem::Scraper
         new_nba_game.home_team.score[3] = game.css("tr:nth-child(2) td:nth-child(7)").text.gsub(/[\n _]/, "") # Quarter 3 score
         new_nba_game.home_team.score[4] = game.css("tr:nth-child(2) td:nth-child(8)").text.gsub(/[\n _]/, "") # Quarter 4 score
 
-        scrape_nba_game_info(new_nba_game)
+        # scrape_nba_game_info(new_nba_game)
 
-        games << new_nba_game
+        #games << new_nba_game
         # CommandLineReporter progress
         progress
       end
     end
-    games
+    #games
   end
 
-  def scrape_nba_game_info(game)
+  def self.scrape_nba_game_info(game)
     get_game_info = Nokogiri::HTML(open(game.url))
 
     game.date = get_game_info.css("#gamematchupsummary div.basicinfo div.datetime.hide1").text

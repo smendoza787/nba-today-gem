@@ -1,7 +1,7 @@
 class NbaTodayGem::CommandLine
   include CommandLineReporter
 
-  attr_reader :games
+  #attr_reader :games
 
   def call
     puts "Hello, Welcome to the NBA Today Gem!"
@@ -28,12 +28,12 @@ class NbaTodayGem::CommandLine
   end
 
   def list_games
-    if !self.games
-      @games = NbaTodayGem::Scraper.new.scrape_nba_scores
+    if NbaTodayGem::Game.all.size == 0
+      NbaTodayGem::Scraper.new.scrape_nba_scores
 
       header :title => 'NBA SCORES', :width => 75, :align => 'center', :rule => true, :color => 'green', :bold => true, :timestamp => true
 
-      self.games.each.with_index(1) do |game, index|
+      NbaTodayGem::Game.all.each.with_index(1) do |game, index|
         table(:border => true) do
           row do
             column('GAME NUM.', :width => 10, :align => 'center')
@@ -55,7 +55,7 @@ class NbaTodayGem::CommandLine
     else
       header :title => 'NBA SCORES', :width => 50, :align => 'center', :rule => true, :color => 'green', :bold => true, :timestamp => true
 
-      self.games.each.with_index(1) do |game, index|
+      NbaTodayGem::Game.all.each.with_index(1) do |game, index|
         table(:border => true) do
           row do
             column('GAME NUM.', :width => 5)
@@ -92,8 +92,10 @@ class NbaTodayGem::CommandLine
       if game_no == "list games"
         list_games
         pick_game_menu
-      elsif game_no.to_i > 0 && game_no.to_i <= self.games.length
+      elsif game_no.to_i > 0 && game_no.to_i <= NbaTodayGem::Game.all.length
         index = game_no.to_i - 1
+        game = NbaTodayGem::Game.find(index)
+        NbaTodayGem::Scraper.scrape_nba_game_info(game)
         show_game(index)
       end
     end
@@ -102,17 +104,17 @@ class NbaTodayGem::CommandLine
   def show_game(index)
     table(:border => true) do
       row do
-        column(self.games[index].date, :width => 30, :align => 'center')
-        column(self.games[index].venue, :width => 55, :align => 'center')
+        column(NbaTodayGem::Game.all[index].date, :width => 30, :align => 'center')
+        column(NbaTodayGem::Game.all[index].venue, :width => 55, :align => 'center')
       end
     end
 
     puts
 
-    if self.games[index].recap != ""
+    if NbaTodayGem::Game.all[index].recap != ""
       table(:border => true) do
         row do
-          column(self.games[index].recap, :width => 80, :align => 'center')
+          column(NbaTodayGem::Game.all[index].recap, :width => 80, :align => 'center')
         end
       end
 
@@ -128,23 +130,23 @@ class NbaTodayGem::CommandLine
         column('QTR 2', :width => 9, :align => 'center')
         column('QTR 3', :width => 9, :align => 'center')
         column('QTR 4', :width => 9, :align => 'center')
-        column(self.games[index].status, :align => 'center')
+        column(NbaTodayGem::Game.all[index].status, :align => 'center')
       end
       row do
-        column(self.games[index].away_team.name)
-        column(self.games[index].away_team.score[1])
-        column(self.games[index].away_team.score[2])
-        column(self.games[index].away_team.score[3])
-        column(self.games[index].away_team.score[4])
-        column(self.games[index].away_team.score[0])
+        column(NbaTodayGem::Game.all[index].away_team.name)
+        column(NbaTodayGem::Game.all[index].away_team.score[1])
+        column(NbaTodayGem::Game.all[index].away_team.score[2])
+        column(NbaTodayGem::Game.all[index].away_team.score[3])
+        column(NbaTodayGem::Game.all[index].away_team.score[4])
+        column(NbaTodayGem::Game.all[index].away_team.score[0])
       end
       row do
-        column(self.games[index].home_team.name)
-        column(self.games[index].home_team.score[1])
-        column(self.games[index].home_team.score[2])
-        column(self.games[index].home_team.score[3])
-        column(self.games[index].home_team.score[4])
-        column(self.games[index].home_team.score[0])
+        column(NbaTodayGem::Game.all[index].home_team.name)
+        column(NbaTodayGem::Game.all[index].home_team.score[1])
+        column(NbaTodayGem::Game.all[index].home_team.score[2])
+        column(NbaTodayGem::Game.all[index].home_team.score[3])
+        column(NbaTodayGem::Game.all[index].home_team.score[4])
+        column(NbaTodayGem::Game.all[index].home_team.score[0])
       end
     end
 
@@ -153,24 +155,24 @@ class NbaTodayGem::CommandLine
 
     table(:border => true) do
       row do
-        column("#{self.games[index].away_team.name}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].away_team.name}", :width => 35, :align => 'center')
         column('', :align => 'center')
-        column("#{self.games[index].home_team.name}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].home_team.name}", :width => 35, :align => 'center')
       end
       row do
-        column("#{self.games[index].top_peformers[:points][0].name}: #{self.games[index].top_peformers[:points][0].points}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:points][0].name}: #{NbaTodayGem::Game.all[index].top_peformers[:points][0].points}", :width => 35, :align => 'center')
         column('POINTS', :align => 'center')
-        column("#{self.games[index].top_peformers[:points][1].name}: #{self.games[index].top_peformers[:points][1].points}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:points][1].name}: #{NbaTodayGem::Game.all[index].top_peformers[:points][1].points}", :width => 35, :align => 'center')
       end
       row do
-        column("#{self.games[index].top_peformers[:rebounds][0].name}: #{self.games[index].top_peformers[:rebounds][0].rebounds}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:rebounds][0].name}: #{NbaTodayGem::Game.all[index].top_peformers[:rebounds][0].rebounds}", :width => 35, :align => 'center')
         column('REBOUNDS', :align => 'center')
-        column("#{self.games[index].top_peformers[:rebounds][1].name}: #{self.games[index].top_peformers[:rebounds][1].rebounds}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:rebounds][1].name}: #{NbaTodayGem::Game.all[index].top_peformers[:rebounds][1].rebounds}", :width => 35, :align => 'center')
       end
       row do
-        column("#{self.games[index].top_peformers[:assists][0].name}: #{self.games[index].top_peformers[:assists][0].assists}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:assists][0].name}: #{NbaTodayGem::Game.all[index].top_peformers[:assists][0].assists}", :width => 35, :align => 'center')
         column('ASSISTS', :align => 'center')
-        column("#{self.games[index].top_peformers[:assists][1].name}: #{self.games[index].top_peformers[:assists][1].assists}", :width => 35, :align => 'center')
+        column("#{NbaTodayGem::Game.all[index].top_peformers[:assists][1].name}: #{NbaTodayGem::Game.all[index].top_peformers[:assists][1].assists}", :width => 35, :align => 'center')
       end
     end
   end
