@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-In the nba-today-gem directory, execute:
+In the `nba-today-gem` directory, execute:
 
     $ ./bin/nba_today_gem
 
