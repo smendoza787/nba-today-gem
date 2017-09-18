@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = "exe"
-  spec.executables   = "nba_today_gem"
+  spec.executables   = [spec.files.grep(%r{^exe/}) { |f| File.basename(f) }, "nba_today"]
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "nokogiri", "~> 1.7"
