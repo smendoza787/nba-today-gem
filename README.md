@@ -14,7 +14,6 @@ gem 'nba_today_gem'
 And then execute:
 
     $ bundle install
-    $ ./bin/nba_today_gem
 
 Or install it yourself as:
 
@@ -22,7 +21,9 @@ Or install it yourself as:
 
 ## Usage
 
-NBA Today Gem is a simple gem that gives you game information on the latest NBA games.
+In the `nba-today-gem` directory, execute:
+
+    $ ./bin/nba_today_gem
 
 ## Development
 
