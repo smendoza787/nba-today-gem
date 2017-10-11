@@ -7,17 +7,17 @@ Data is scraped from MSN Sports.
 
 Install the `nba_today_gem` by running:
 
-    ```
-    $ gem install nba_today_gem
-    ```
+```
+$ gem install nba_today_gem
+```
 
 ## :basketball: Usage
 
 In your terminal, run:
 
-    ```
-    $ nba_today_gem
-    ```
+```
+$ nba_today_gem
+```
 
 Follow the instructions for navigating through the latest NBA scores!
 
